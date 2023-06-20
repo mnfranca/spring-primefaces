@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jboss-deployment-structure>
+<!-- 	<deployment> -->
+<!-- 		<exclude-subsystems> -->
+<!-- 			<subsystem name="weld" /> -->
+<!-- 		</exclude-subsystems> -->
+<!-- 		<exclusions> -->
+<!-- 			<module name="org.jboss.weld.api" /> -->
+<!-- 			<module name="org.jboss.weld.core" /> -->
+<!-- 			<module name="org.jboss.weld.probe" /> -->
+<!-- 			<module name="org.jboss.weld.spi" /> -->
+<!-- 		</exclusions> -->
+<!-- 	</deployment> -->
+</jboss-deployment-structure>
