@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "role", catalog = "imo")
@@ -24,6 +25,7 @@ public class Role implements Serializable {
 	private Long id;
 
 	@Column(name = "name", unique = true)
+	@NotBlank(message = "O nome da permissão ser informada")
 	private String name;
 	
     @ManyToMany(mappedBy = "roles")

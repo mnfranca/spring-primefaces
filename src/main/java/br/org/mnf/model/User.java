@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "user", catalog = "imo")
@@ -26,9 +27,11 @@ public class User implements Serializable {
 	private Long id;
 
 	@Column(name = "username", unique = true)
+	@NotBlank(message = "O nome de usuário deve ser informado")
 	private String username;
 
 	@Column(name = "password")
+	@NotBlank(message = "A senha deve ser informada")
 	private String password;
 
 	@ManyToMany
