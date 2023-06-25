@@ -2,19 +2,17 @@ package br.org.mnf.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "role", catalog = "imo")
+@Table(name = "role", schema = "imo")
 public class Role implements Serializable {
 
 	private static final long serialVersionUID = -1912222498703346399L;
@@ -28,9 +26,6 @@ public class Role implements Serializable {
 	@NotBlank(message = "O nome da permissão ser informada")
 	private String name;
 	
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
-    
     public Role() {
 		super();
 	}
@@ -49,14 +44,6 @@ public class Role implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Set<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
 	}
 
 	@Override

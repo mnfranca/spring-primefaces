@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "user", catalog = "imo")
+@Table(name = "user", schema = "imo")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 319143293251491084L;
@@ -36,6 +36,7 @@ public class User implements Serializable {
 
 	@ManyToMany
 	@JoinTable(name = "users_roles",
+			schema = "imo",
 			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private Set<Role> roles;
