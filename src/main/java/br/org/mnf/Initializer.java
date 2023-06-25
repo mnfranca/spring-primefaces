@@ -1,13 +1,13 @@
-package br.org.mnf.config;
+package br.org.mnf;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-public class ServletInitializer extends SpringBootServletInitializer {
+public class Initializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(SpringPrimefacesApplication.class);
+		return application.sources(Application.class);
 	}
 
 }

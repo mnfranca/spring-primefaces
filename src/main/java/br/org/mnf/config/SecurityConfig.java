@@ -27,6 +27,7 @@ public class SecurityConfig {
 						.defaultSuccessUrl("/dashboard.xhtml", true)
 						.failureUrl("/login.xhtml?error=true")
 						.permitAll())
+				.logout(logout -> logout.logoutSuccessUrl("/login.xhtml"))
 				.csrf()
 				.disable()
 				.build();
@@ -53,5 +54,5 @@ public class SecurityConfig {
 				.build();
 		return new InMemoryUserDetailsManager(user1, user2, admin);
 	}
-
+	
 }
