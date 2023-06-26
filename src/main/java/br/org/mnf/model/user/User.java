@@ -1,4 +1,4 @@
-package br.org.mnf.model;
+package br.org.mnf.model.user;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,11 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "user", schema = "imo")
+@NamedQueries({ @NamedQuery(name = "User.byUsername", query = "FROM User u WHERE u.username = :username") })
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 319143293251491084L;
@@ -40,7 +43,7 @@ public class User implements Serializable {
 			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private Set<Role> roles;
-	
+
 	public User() {
 		super();
 	}
