@@ -1,4 +1,4 @@
-package br.org.mnf.model;
+package br.org.mnf.model.user;
 
 import java.io.Serializable;
 import java.util.Objects;

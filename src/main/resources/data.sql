@@ -1,0 +1,2 @@
+INSERT INTO imo.user (username, password) VALUES ('user1', '$2a$10$wGQsgrdIChNQ8R5Rjd9/CuTgAdq1Okz77UURAiTa/ZLpnnmU/RmNu');
+INSERT INTO imo.user (username, password) VALUES ('user2', '$2a$10$wGQsgrdIChNQ8R5Rjd9/CuTgAdq1Okz77UURAiTa/ZLpnnmU/RmNu');
