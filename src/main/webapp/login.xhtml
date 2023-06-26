@@ -36,7 +36,7 @@
 						<p:password id="password" placeholder="Password" feedback="false" />
 					</div>
 					<div class="col-12 md:col-6">
-						<p:staticMessage severity="warn" detail="Login failed!"
+						<p:staticMessage severity="warn" detail="#{SPRING_SECURITY_LAST_EXCEPTION.message}"
 							rendered="${!empty param['error']}" />
 					</div>
 					<div class="col-12">
