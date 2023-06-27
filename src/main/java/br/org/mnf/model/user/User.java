@@ -38,10 +38,10 @@ public class User implements Serializable {
 	private String password;
 
 	@ManyToMany
-	@JoinTable(name = "users_roles",
+	@JoinTable(name = "user_role",
 			schema = "imo",
-			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+			joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "id"))
 	private Set<Role> roles;
 
 	public User() {

@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import br.org.mnf.dao.user.UserDao;
 import br.org.mnf.model.user.User;
+import br.org.mnf.utils.Messages;
 
 public class MyUserDetailsService implements UserDetailsService {
 
@@ -19,7 +20,7 @@ public class MyUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<User> user = userDao.getByUsername(username);
 		if (!user.isPresent()) 
-			throw new UsernameNotFoundException("Could not find user");
+			throw new UsernameNotFoundException(Messages.get("error.invalid.user"));
 		return new MyUserDetails(user.get());
 	}
 
