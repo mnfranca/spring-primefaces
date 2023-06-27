@@ -19,14 +19,14 @@
 <h:body styleClass="login-body">
 
 	<h:form prependId="false">
-	
+
 		<p:focus for="username" />
 
 		<div id="login-wrapper">
 			<p:graphicImage name="images/login-logo.png" library="omega-layout" />
 
 			<div id="login-container">
-				<span class="title">Omega</span>
+				<span class="title">Spring / JSF / Primefaces / Omega</span>
 
 				<div class="grid ui-fluid">
 					<div class="col-12">
@@ -35,9 +35,11 @@
 					<div class="col-12">
 						<p:password id="password" placeholder="Password" feedback="false" />
 					</div>
-					<div class="col-12 md:col-6">
-						<p:staticMessage severity="warn" detail="#{SPRING_SECURITY_LAST_EXCEPTION.message}"
-							rendered="${!empty param['error']}" />
+					<div class="col-12">
+						<p:staticMessage 
+							detail="#{SPRING_SECURITY_LAST_EXCEPTION.message}"
+							rendered="${!empty SPRING_SECURITY_LAST_EXCEPTION.message}"
+							severity="warn" />
 					</div>
 					<div class="col-12">
 						<p:commandButton ajax="false" icon="pi pi-user" value="Login" />
