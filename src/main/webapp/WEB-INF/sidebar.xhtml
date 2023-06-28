@@ -16,7 +16,7 @@
             <div class="profile">
                 <p:graphicImage name="images/profile.png" library="omega-layout" />
                 <a id="profile-button" href="#">
-                    <span class="username">Peggy Olson</span>
+                    <span class="username">#{authenticationFacade.authentication.name}</span>
                     <i class="pi pi-fw pi-cog"/>
                 </a>
                 <ul>
@@ -64,9 +64,9 @@
                         <p:menuitem id="m_login" value="Login" icon="pi pi-fw pi-sign-in" outcome="/login"/>
                         <p:menuitem id="m_invoice" value="Invoice" icon="pi pi-fw pi-dollar" outcome="/invoice"/>
                         <p:menuitem id="m_help" value="Help" icon="pi pi-fw pi-question-circle" outcome="/help"/>
-                        <p:menuitem id="m_error" value="Error" icon="pi pi-fw pi-times-circle" outcome="/error"/>
-                        <p:menuitem id="m_notfound" value="Not Found" icon="pi pi-fw pi-exclamation-circle" outcome="/notfound"/>
-                        <p:menuitem id="m_access" value="Access Denied" icon="pi pi-fw pi-lock" outcome="/access"/>
+                        <p:menuitem id="m_error" value="Error" icon="pi pi-fw pi-times-circle" outcome="/error/500.xhtml"/>
+                        <p:menuitem id="m_notfound" value="Not Found" icon="pi pi-fw pi-exclamation-circle" outcome="/error/404.xhtml"/>
+                        <p:menuitem id="m_access" value="Access Denied" icon="pi pi-fw pi-lock" outcome="/error/401.xhtml"/>
                         <p:menuitem id="m_empty" value="Empty" icon="pi pi-fw pi-circle-off" outcome="/empty"/>
                     </p:submenu>
                     <p:submenu id="m_hierarchy" label="Hierarchy" icon="pi pi-fw pi-align-left">
