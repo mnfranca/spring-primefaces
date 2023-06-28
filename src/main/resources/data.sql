@@ -9,4 +9,4 @@ INSERT INTO imo.user (username, password) VALUES ('user2', '$2a$10$wGQsgrdIChNQ8
 -- USER_ROLE
 INSERT INTO imo.user_role (id_user, id_role) VALUES (1, 1);
 INSERT INTO imo.user_role (id_user, id_role) VALUES (1, 2);
-INSERT INTO imo.user_role (id_user, id_role) VALUES (2, 2);
+INSERT INTO imo.user_role (id_user, id_role) VALUES (2, 1);

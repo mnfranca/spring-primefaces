@@ -24,8 +24,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/resources/**", "/public/**", "/javax.faces.resource/**")
+				.antMatchers("/resources/**", "/public/**", "/javax.faces.resource/**", "/error/**")
 				.permitAll()
+				.antMatchers("/formlayout.xhtml")
+				.hasAuthority("ADMIN")
 				.anyRequest()
 				.authenticated()
 				.and()
@@ -34,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						.failureUrl("/login.xhtml?error=true")
 						.permitAll())
 				.logout(logout -> logout.logoutSuccessUrl("/login.xhtml").permitAll())
+				.exceptionHandling(exception -> exception.accessDeniedPage("/error/401.xhtml"))
 				.csrf()
 				.disable();
 	}
