@@ -1,4 +1,4 @@
-package br.org.mnf.model.user;
+package br.org.mnf.model.usuario;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,8 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "role", schema = "imo")
-public class Role implements Serializable {
+@Table(name = "permissao", schema = "imo")
+public class Permissao implements Serializable {
 
 	private static final long serialVersionUID = -1912222498703346399L;
 
@@ -22,11 +22,11 @@ public class Role implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "name", unique = true)
+	@Column(name = "nome", unique = true)
 	@NotBlank(message = "O nome da permissão ser informada")
-	private String name;
+	private String nome;
 	
-    public Role() {
+    public Permissao() {
 		super();
 	}
 
@@ -38,12 +38,12 @@ public class Role implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	@Override
@@ -59,8 +59,13 @@ public class Role implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Role other = (Role) obj;
+		Permissao other = (Permissao) obj;
 		return Objects.equals(id, other.id);
 	}
 
+	@Override
+	public String toString() {
+		return "Permissao [nome=" + nome + "]";
+	}
+	
 }

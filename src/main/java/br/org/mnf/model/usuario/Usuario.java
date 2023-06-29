@@ -1,4 +1,4 @@
-package br.org.mnf.model.user;
+package br.org.mnf.model.usuario;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -18,9 +18,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "user", schema = "imo")
-@NamedQueries({ @NamedQuery(name = "User.byUsername", query = "FROM User u WHERE u.username = :username") })
-public class User implements Serializable {
+@Table(name = "usuario", schema = "imo")
+@NamedQueries({ @NamedQuery(name = "User.byLogin", query = "FROM Usuario u WHERE u.login = :login") })
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 319143293251491084L;
 
@@ -29,22 +29,22 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "username", unique = true)
+	@Column(name = "login", unique = true)
 	@NotBlank(message = "O nome de usuário deve ser informado")
-	private String username;
+	private String login;
 
-	@Column(name = "password")
+	@Column(name = "senha")
 	@NotBlank(message = "A senha deve ser informada")
-	private String password;
+	private String senha;
 
 	@ManyToMany
-	@JoinTable(name = "user_role",
+	@JoinTable(name = "usuario_permissao",
 			schema = "imo",
-			joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "id"))
-	private Set<Role> roles;
+			joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "id_permissao", referencedColumnName = "id"))
+	private Set<Permissao> permissoes;
 
-	public User() {
+	public Usuario() {
 		super();
 	}
 
@@ -56,28 +56,28 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
+	public Set<Permissao> getPermissoes() {
+		return permissoes;
 	}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
+	public void setPermissoes(Set<Permissao> permissoes) {
+		this.permissoes = permissoes;
 	}
 
 	@Override
@@ -93,13 +93,13 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Usuario other = (Usuario) obj;
 		return Objects.equals(id, other.id);
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + "]";
+		return "Usuario [login=" + login + ", senha=" + senha + "]";
 	}
 
 }

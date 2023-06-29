@@ -6,17 +6,17 @@ import org.springframework.stereotype.Repository;
 
 import br.org.mnf.dao.DaoImpl;
 import br.org.mnf.dao.DaoParams;
-import br.org.mnf.model.user.User;
+import br.org.mnf.model.usuario.Usuario;
 
 @Repository
-public class UserDao extends DaoImpl<User, Long> {
+public class UserDao extends DaoImpl<Usuario, Long> {
 
 	public UserDao() {
-		super(User.class);
+		super(Usuario.class);
 	}
 
-	public Optional<User> getByUsername(String username) {
-		return findByNamedQuery("User.byUsername", DaoParams.of("username", username).build()).stream()
+	public Optional<Usuario> getByLogin(String login) {
+		return findByNamedQuery("User.byLogin", DaoParams.of("login", login).build()).stream()
 				.findFirst();
 	}
 

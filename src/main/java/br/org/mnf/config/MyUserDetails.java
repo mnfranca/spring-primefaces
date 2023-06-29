@@ -7,35 +7,35 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import br.org.mnf.model.user.User;
+import br.org.mnf.model.usuario.Usuario;
 
 public class MyUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 1663836995254990605L;
 	
-	private User user;
+	private Usuario user;
 
-	public MyUserDetails(User user) {
+	public MyUserDetails(Usuario user) {
 		super();
 		this.user = user;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return user.getRoles()
+		return user.getPermissoes()
 				.stream()
-				.map(role -> new SimpleGrantedAuthority(role.getName()))
+				.map(role -> new SimpleGrantedAuthority(role.getNome()))
 				.collect(Collectors.toList());
 	}
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return user.getSenha();
 	}
 
 	@Override
 	public String getUsername() {
-		return user.getUsername();
+		return user.getLogin();
 	}
 
 	@Override

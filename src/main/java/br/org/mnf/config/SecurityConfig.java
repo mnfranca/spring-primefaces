@@ -23,24 +23,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-				.antMatchers("/resources/**", "/public/**", "/javax.faces.resource/**", "/error/**")
-				.permitAll()
-				.antMatchers("/formlayout.xhtml")
-				.hasAuthority("ADMIN")
-				.anyRequest()
-				.authenticated()
-				.and()
+		http.csrf(csrf -> csrf.disable())
+				.authorizeRequests(authorize -> authorize
+						.antMatchers("/resources/**", "/public/**", "/javax.faces.resource/**", "/error/**")
+						.permitAll()
+						.antMatchers("/formlayout.xhtml")
+						.access("hasAuthority('USUARIO') and hasAuthority('ADMIN')")
+						.anyRequest()
+						.authenticated())
 				.formLogin(form -> form.loginPage("/login.xhtml")
 						.defaultSuccessUrl("/dashboard.xhtml", true)
 						.failureUrl("/login.xhtml?error=true")
 						.permitAll())
 				.logout(logout -> logout.logoutSuccessUrl("/login.xhtml").permitAll())
-				.exceptionHandling(exception -> exception.accessDeniedPage("/error/401.xhtml"))
-				.csrf()
-				.disable();
+				.exceptionHandling(exception -> exception.accessDeniedPage("/error/access_denied.xhtml"));
 	}
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
@@ -53,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public UserDetailsService userDetailsService() {
-		return new MyUserDetailsService();
+		return new UserDetailsDaoService();
 	}
 
 	@Bean
@@ -63,20 +61,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		authProvider.setPasswordEncoder(passwordEncoder());
 		return authProvider;
 	}
-	
+
 	@Bean
 	public LocaleResolver localeResolver() {
-	    SessionLocaleResolver slr = new SessionLocaleResolver();
-	    slr.setDefaultLocale(new Locale("pt", "BR"));
-	    return slr;
+		SessionLocaleResolver slr = new SessionLocaleResolver();
+		slr.setDefaultLocale(new Locale("pt", "BR"));
+		return slr;
 	}
-	
-    @Bean
-    public MessageSource messageSource() {
-    	ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("messages");
-        messageSource.setDefaultEncoding("UTF-8");
-        return messageSource;
-    }
+
+	@Bean
+	public MessageSource messageSource() {
+		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setBasenames("messages");
+		messageSource.setDefaultEncoding("ISO-8859-1");
+		return messageSource;
+	}
 
 }
