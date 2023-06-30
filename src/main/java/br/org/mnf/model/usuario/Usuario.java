@@ -36,6 +36,10 @@ public class Usuario implements Serializable {
 	@Column(name = "senha")
 	@NotBlank(message = "A senha deve ser informada")
 	private String senha;
+	
+	@Column(name = "matricula")
+	@NotBlank(message = "A matrícula deve ser informada")
+	private String matricula;
 
 	@ManyToMany
 	@JoinTable(name = "usuario_permissao",
@@ -72,6 +76,14 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
 	public Set<Permissao> getPermissoes() {
 		return permissoes;
 	}
@@ -99,7 +111,7 @@ public class Usuario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [login=" + login + ", senha=" + senha + "]";
+		return "Usuario [id=" + id + ", login=" + login + ", matricula=" + matricula + "]";
 	}
 
 }

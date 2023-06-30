@@ -16,9 +16,9 @@
 				</div>
 				<div class="profile">
 					<p:graphicImage name="images/profile.png" library="omega-layout" />
-					<a id="profile-button" href="#"> <span class="username">#{authenticationFacade.authentication.principal.username}</span>
+					<a id="profile-button" href="#"> <span class="username">#{usuarioBean.username}</span>
 						<br/>
-						<span class="username">#{authenticationFacade.authentication.authorities}</span>
+						<span class="username">#{usuarioBean.authorities}</span>
 						<i class="pi pi-fw pi-cog" />
 					</a>
 					<ul>
