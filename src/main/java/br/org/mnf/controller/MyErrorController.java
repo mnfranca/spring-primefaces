@@ -17,15 +17,15 @@ public class MyErrorController implements ErrorController {
 		if (status != null) {
 			Integer statusCode = Integer.valueOf(status.toString());
 			if (statusCode == HttpStatus.NOT_FOUND.value())
-				return "/error/404.xhtml";
+				return "/error/not_found.xhtml";
 			else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value())
-				return "/error/500.xhtml";
+				return "/error/error.xhtml";
 			else if (statusCode == HttpStatus.FORBIDDEN.value())
-				return "/error/403.xhtml";
+				return "/error/access_denied.xhtml";
 			else if (statusCode == HttpStatus.UNAUTHORIZED.value())
-				return "/error/401.xhtml";
+				return "/error/access_denied.xhtml";
 		}
-		return "/error/500.xhtml";
+		return "/error/error.xhtml";
 	}
 
 }
