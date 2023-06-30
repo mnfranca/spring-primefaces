@@ -19,7 +19,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "usuario", schema = "imo")
-@NamedQueries({ @NamedQuery(name = "User.byLogin", query = "FROM Usuario u WHERE u.login = :login") })
+@NamedQueries({ @NamedQuery(name = "Usuario.byLogin", query = "FROM Usuario u WHERE u.login = :login") })
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 319143293251491084L;

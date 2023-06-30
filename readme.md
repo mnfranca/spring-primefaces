@@ -6,7 +6,8 @@ Esta aplicação está configurada para ser executada com os seguintes recursos:
 2. JBoss EAP 7.2;
 3. JSF 2.3;
 4. Primefaces 10.0.0;
-5. Spring Boot 2.7.12.
+5. Spring Boot 2.7.12;
+6. Spring Security 5.6.9.
 
 ## Spring Security
 

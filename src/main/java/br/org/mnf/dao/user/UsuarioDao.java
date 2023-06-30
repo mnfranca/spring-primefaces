@@ -9,14 +9,14 @@ import br.org.mnf.dao.DaoParams;
 import br.org.mnf.model.usuario.Usuario;
 
 @Repository
-public class UserDao extends DaoImpl<Usuario, Long> {
+public class UsuarioDao extends DaoImpl<Usuario, Long> {
 
-	public UserDao() {
+	public UsuarioDao() {
 		super(Usuario.class);
 	}
 
 	public Optional<Usuario> getByLogin(String login) {
-		return findByNamedQuery("User.byLogin", DaoParams.of("login", login).build()).stream()
+		return findByNamedQuery("Usuario.byLogin", DaoParams.of("login", login).build()).stream()
 				.findFirst();
 	}
 
